@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+
+const int ARR_SIZE = 17;
+
+class Movie{
+	private:
+		string title;
+		long id;
+
+	public:
+};
+
+
+int main()
+{
+	string titleArr [] = {"Interstellar","Whiplash","Gone Girl",
+	"The Wolf of Wall Street","Rush","Django Unchained","The Avengers",
+	"Warrior","The Thing","Inception","Toy Story 3","How to Train Your Dragon",
+	"3 Idiots","Inglourious Basterds","Up","Mary and Max","The Dark Knight",
+	"Gran Torino","My Sassy Girl","Into the Wild","The Departed","The Prestige",
+	"V for Vendetta","Eternal Sunshine of the Spotless Mind","Hotel Rwanda"};
+
+	long idArr [] = {816692,2582802,2267998,993846,1979320,1853728,848228,
+	1291584,905372,1375666,435761,892769,1187043,361748,1049413,978762,
+	468569,1205489,404254,758758,407887,482571,434409,338013,395169};
+  
+	return 0;
+}
