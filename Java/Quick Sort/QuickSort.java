@@ -1,7 +1,69 @@
 package recursion;
 
-public class MergeSort {
+public class QuickSort {
 
+	/******************************************************
+	 * method: main(String[])
+	 *         runs the program. Tests a list of numbers
+	 * ****************************************************/
+	public static void main(String[] args) {
+		int[] list = {5, 2, 9, 3, 8, 4, 0, 1, 6, 7};
+		print(list);
+		quickSort(list);
+		print(list);
+	}
+	
+	/***************************************************************
+	 * method: partition(int[], int , int)
+	 *         returns the pivot index.
+	 * *************************************************************/
+	public static int partition(int[] list, int low, int high) {
+		int temp;							// temporary variable for swap
+		boolean done = false;
+		int mid      = (low + high) / 2; 	// pick middle element as pivot
+		int pivot    = list[mid];			// choose middle location as pivot
+		
+		while(!done) {
+			
+			/************************************************************
+			 * increment: low
+			 *        	  increment low while value in low index < pivot
+			 * **********************************************************/
+			while(list[low] < pivot) {	
+				low++;
+			}
+			
+			/**************************************************************
+			 * decrement: high
+			 *        	  decrement high while pivot < value in high index 
+			 * ************************************************************/
+			while(pivot < list[high]) {	
+				high--;
+			}
+			
+			/********************************************************
+			 * check: index
+			 *        if there are zero or one items remaining, all 
+			 *        items are now partitioned. return high index.
+			 * ******************************************************/
+			if (low >= high) {
+				done = true;
+			}else {
+				/********************************************************
+				 * swap: index
+				 *       swap list[low] and list[high], update low and
+				 *       high indexes.
+				 * ******************************************************/
+				temp       = list[low];
+				list[low]  = list[high];
+				list[high] = temp;
+				low++;
+				high--;
+			}
+		}
+		return high;
+	}
+	
 	/***************************************************************
 	 * method: print(int[])
 	 *         prints contents of list.
@@ -21,107 +83,45 @@ public class MergeSort {
 	}
 	
 	/***************************************************************
-	 * method: splitLeft(int[])
-	 *         returns first half of list.
+	 * method: quickSort(int[])
+	 *         initial call to sort list using quick sort algorithm.
 	 * *************************************************************/
-	public static int[] splitLeft(int[ ] list) {
-		int size        = list.length / 2;
-		int[] leftList  = new int[size];
-		
-		for(int i = 0; i < size; i++) {
-			leftList[i] = list[i];
-		}
-		return leftList;
+	public static void quickSort(int[] list) {
+		quickSort(list, 0, list.length - 1);
 	}
 	
-	/***************************************************************
-	 * method: splitRight(int[])
-	 *         returns second half of list.
-	 * *************************************************************/
-	public static int[] splitRight(int[ ] list) {
-		int halfSize    = list.length / 2;					 // half of size
-		int size        = list.length - (list.length / 2);	 // the rest
-		int[] rightList = new int[size];
+	/*****************************************************************
+	 * method: quickSort(int[], int, int)
+	 *         sorts list using quick sort algorithm using recursion.
+	 * ***************************************************************/
+	public static void quickSort(int[] list, int low, int high) {
 		
-		for(int i = 0; i < size; i++) {
-			rightList[i] = list[halfSize + i];
+		int last;				// last item in low partition
+		
+		/***************************************************************
+		 * base case: sorted partitions
+		 *        	  if there are zero or one items to sort, partition 
+		 *        	  is already sorted.
+		 * *************************************************************/
+		if (low >= high) {
+			return;
 		}
 		
-		return rightList;
+		/*****************************************************************
+		 * partition: index
+		 *            partition the data within the array. Value returned
+		 *        	  from partitioning is the location of the last item 
+		 *            in low partition.
+		 * ***************************************************************/
+		last = partition(list, low, high);
+		
+		/**********************************************************
+		 * recursion: sort
+		 *        	  recursively sort low partition (low to last) 
+		 *            and high partition (last + 1 to high).
+		 * ********************************************************/
+		quickSort(list, low, last);
+		quickSort(list, last + 1, high);
 	}
 	
-	/***************************************************************
-	 * method: merge(int[], int[], int[])
-	 *         merge two halves into one list.
-	 * *************************************************************/
-	public static void merge(int[] left, int[] right, int[] list) {
-		
-		int leftIndex 	= 0;		//current left index
-		int rightIndex 	= 0;		//current right index
-		int listIndex  	= 0;		//current merged list index
-		
-		/************************************************************************
-		 * merge: elements
-		 *        if current left element is less than current right element add 
-		 *        it as next item in list, otherwise insert right element.
-		 * **********************************************************************/
-		while(     leftIndex <  left.length 
-				&& rightIndex < right.length ) {
-			
-			if(left[leftIndex] < right[rightIndex]) {
-				list[listIndex++] = left[leftIndex++];
-			}else {
-				list[listIndex++] = right[rightIndex++];
-			}
-		}
-		
-		/*********************************************************
-		 * increment: left index
-		 *            increment and add any left over items in 
-		 *            the first half to the merged list.
-		 * *******************************************************/
-		while(leftIndex <  left.length ) {
-			list[listIndex++] = left[leftIndex++];
-		}
-		
-		/*********************************************************
-		 * increment: right index
-		 *            increment and add any left over items in 
-		 *            the second half to the merged list.
-		 * *******************************************************/
-		while(rightIndex <  right.length ) {
-			list[listIndex++] = right[rightIndex++];
-		}
-		
-	}
-	
-	/******************************************************
-	 * method: mergeSort(int[])
-	 *         sorts list using the merge sort algorithm
-	 * ****************************************************/
-	public static void mergeSort(int[ ] list) {
-		if (list.length > 1) {
-			
-			int[] leftList  = splitLeft(list);
-			int[] rightList = splitRight(list);	
-			
-			mergeSort(leftList);				//recursion
-			mergeSort(rightList);				//recursion
-			merge(leftList, rightList, list);
-		}else if (list.length == 1){
-			System.out.println("Merged: There is only one item in list");
-		}
-	}
-	
-	/******************************************************
-	 * method: main(String[])
-	 *         runs the program. Tests a list of numbers
-	 * ****************************************************/
-	public static void main(String[] args) {
-		int[] list = {2, 9, 5, 4, 8, 1, 6, 7};
-		print(list);
-		mergeSort(list);
-		print(list);
-	}
-
 }
