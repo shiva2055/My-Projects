@@ -122,6 +122,7 @@ public class QuickSort {
 		 * ********************************************************/
 		quickSort(list, low, last);
 		quickSort(list, last + 1, high);
+		
 	}
 	
 }
