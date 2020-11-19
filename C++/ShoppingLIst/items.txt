@@ -1,0 +1,5 @@
+banana,3.99,food
+chair,24.20,home
+shampoo,4.79,beauty
+flower,5.50,home
+shirt,25.99,clothing
