@@ -83,5 +83,6 @@ public class LinearSearch {
 		System.out.println();
 			
 	}
+	
 
 }
