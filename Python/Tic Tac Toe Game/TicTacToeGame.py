@@ -17,8 +17,8 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 # Images
-X_IMAGE = pygame.transform.scale(pygame.image.load("Images/x.png"), (150, 150))
-O_IMAGE = pygame.transform.scale(pygame.image.load("Images/o.png"), (150, 150))
+X_IMAGE = pygame.transform.scale(pygame.image.load("Images_x.png"), (150, 150))
+O_IMAGE = pygame.transform.scale(pygame.image.load("Images_0.png"), (150, 150))
 
 # Fonts
 END_FONT = pygame.font.SysFont('courier', 40)
