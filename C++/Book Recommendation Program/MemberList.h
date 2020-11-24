@@ -1,3 +1,8 @@
+MemberList.h
+#include "Member.h"
+#include <iostream>
+#include <string>
+
 #ifndef MEMBERLIST_H
 #define MEMBERLIST_H
 using namespace std;
@@ -11,7 +16,6 @@ MemberList(const MemberList &rhs);
 MemberList& operator=(const MemberList &rhs);
 ElementType& operator[](int index);
 int insert(ElementType el);
-int getCount()const;
 ~MemberList();
 private:
 void resize();
@@ -24,3 +28,4 @@ ElementType *arr;
 };
 
 #endif
+
