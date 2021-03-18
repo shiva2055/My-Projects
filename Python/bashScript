@@ -1,0 +1,42 @@
+//Program to check if three numbers are co-prime
+
+
+
+
+#! /bin/bash
+
+echo "Enter the first number"
+read a
+echo "Enter the second number"
+read b
+echo "Enter the thrid number"
+read c 
+
+function Prime3(){
+	echo $1  $2  $3  
+	first=$1
+	second=$2
+	third=$3 
+	
+	while true 
+	do 
+	reminder= $(( $first % $second ))
+	if [ $rem -eq 0 ] 
+	then
+		ans=$second
+	break
+	fi
+	first= $second
+	second= $reminder
+	done 
+	num= $( "$third" % "$ans") 
+	if [ "$num" -eq 1 ] 
+		then echo $1 $2 $3 "are the primes"
+		exit 0
+	else 
+		echo $1 $2 $3 "are not primes"  
+		exit 1
+	fi
+
+}
+Prime3 $a $b $c 
