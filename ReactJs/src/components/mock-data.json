@@ -1,0 +1,32 @@
+[
+    {
+        "id": 23906,
+        "date": "10/19/21",
+        "status": "Finished",
+        "description": "accidentally installed bonzi buddy again:("
+    },
+    {
+        "id": 93875,
+        "date": "11/2/21",
+        "status": "Finished",
+        "description": "need help downloading more RAM"
+    },
+    {
+        "id": 30089,
+        "date": "11/12/21",
+        "status": "Finished",
+        "description": "keyboard isn't connecting"
+    },
+    {
+        "id": 90583,
+        "date": "11/13/21",
+        "status": "In Progress",
+        "description": "computer boots, but..."
+    },
+    {
+        "id": 39058,
+        "date": "11/17/21",
+        "status": "Received",
+        "description": "need a new printer installed on my network"
+    }
+]

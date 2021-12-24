@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "date": "01/01/21",
+      "status": "Complete",
+      "description": "Computer won't boot!!..."
+    },
+    {
+      "id": 2,
+      "date": "02/30/21",
+      "status": "Complete",
+      "description": "Anderson accounts are on my a remote drive and I can't access them..."
+    },
+    {
+      "id": 3,
+      "date": "04/18/21",
+      "status": "Complete",
+      "description": "Need help downloading more RAM..."
+    },
+    {
+      "id": 4,
+      "date": "10/12/21",
+      "status": "In Progress",
+      "description": "I need a gaming machine built for my son..."
+    },
+    {
+      "id": 5,
+      "date": "11/15/21",
+      "status": "Received",
+      "description": "WinRAR trial expired"
+    }
+  ]
